@@ -54,7 +54,9 @@ function getById (id) {
   return null;
 }
 
+
 module.exports = exports = {
-  all: allEvents,
-  getById: getById
+  'all': allEvents,
+  'getById': getById
+  
 };
