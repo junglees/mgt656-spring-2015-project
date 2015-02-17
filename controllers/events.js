@@ -67,24 +67,6 @@ function checkIntRange(request, fieldName, minVal, maxVal, contextData){
   return value;
 }
 
-function checkImage(request, picture, contextData){
-  var value = request.body[picture];
-  if(value === ''){
-    contextData.errors.push('you need a image');
-  }
-  else{
-    if(value.indexOf(/https|http/)<0){
-      console.log('has http ');
-      contextData.errors.push('Your image does not begin with https or http.');
-    }
-    
-    if(value.indexOf(/\.(png|gif)$/)<0){
-      contextData.errors.push('Your image does not end with png or gif.');
-    }
-  }
-  return value;
-}
-
 /**
  * Controller to which new events are submitted.
  * Validates the form and adds the new event to
@@ -103,9 +85,12 @@ function saveEvent(request, response){
   
   var year = checkIntRange(request,'year',2015,2016,contextData);
   var month = checkIntRange(request,'month',0,11,contextData);
-  var imag = checkImage(request,'image',contextData);
   var day = checkIntRange(request,'day',1,31,contextData);
   var hour = checkIntRange(request,'hour',0,23,contextData);
+  
+  if(!validator.isURL(request.body.image) || (request.body.image.match(/\.(png|gif)$/i)===null)){
+    contextData.errors.push('Your image should be a valid URL and should end in png or gif.');
+  }
 
 
   if (contextData.errors.length === 0) {
@@ -141,7 +126,8 @@ function rsvp (request, response){
   if(validator.isEmail(request.body.email)){
     var mail=request.body.email.toUpperCase();
     if (mail.indexOf('@YALE.EDU')>-1){
-      ev.attending.push(request.body.email);
+      var success=request.body.email.toLowerCase();
+      ev.attending.push(success);
       response.redirect('/events/' + ev.id);
     }
    else{
