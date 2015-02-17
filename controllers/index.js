@@ -13,7 +13,7 @@ function index (request, response) {
     'events': []
   };
   
-  for(var i=0; i<events.all.length; i++){
+ for(var i=0; i<events.all.length; i++){
   var event = events.all[i];
   if (event.date > now) {
     contextData.events.push(event);

@@ -57,7 +57,8 @@ function checkIntRange(request, fieldName, minVal, maxVal, contextData){
   var value=null;
   if (validator.isInt(request.body[fieldName])===false){
     contextData.errors.push('Your' + fieldName + 'should be an integer');
-  }else{
+  }
+  else{
     value=parseInt(request.body[fieldName],10);
     if (value>maxVal || value<minVal){
       contextData.errors.push('Your ' + fieldName + ' should be in the range of' + minVal + '-'+ maxVal);
@@ -66,12 +67,24 @@ function checkIntRange(request, fieldName, minVal, maxVal, contextData){
   return value;
 }
 
-function checkImage(request, contextData, picture){
-  var value = picture;
-  if(value.match(/https|http/)<0){
-    contextData.errors('Your image does not begin with https or http.');
-  }else if(value.match(/\.png|\.gif/)<0){
-    contextData.errors('Your image does not end with png or gif.');
+function checkImage(request, picture, contextData){
+  var value = request.body[picture];
+  console.log('image value ' + value);
+  if(value === ''){
+    console.log('got here??');
+    contextData.errors.push('you need a image');
+  }
+  else{
+    console.log('got here?????');
+    
+    if(value.indexOf(/https|http/)<0){
+      console.log('has http ');
+      contextData.errors.push('Your image does not begin with https or http.');
+    }
+    
+    if(value.indexOf(/\.(png|gif)$/)<0){
+      contextData.errors.push('Your image does not end with png or gif.');
+    }
   }
   return value;
 }
@@ -94,11 +107,11 @@ function saveEvent(request, response){
   
   var year = checkIntRange(request,'year',2015,2016,contextData);
   var month = checkIntRange(request,'month',0,11,contextData);
+  var imag = checkImage(request,'image',contextData);
   var day = checkIntRange(request,'day',1,31,contextData);
   var hour = checkIntRange(request,'hour',0,23,contextData);
-  
-  var image = checkImage(request,contextData,'image');
-  
+
+
   if (contextData.errors.length === 0) {
     var newEvent = {
       id: events.getMaxId() + 1,
@@ -130,14 +143,17 @@ function rsvp (request, response){
   }
 
   if(validator.isEmail(request.body.email)){
-    ev.attending.push(request.body.email);
-    response.redirect('/events/' + ev.id);
-  }else{
+    var mail=request.body.email.toUpperCase();
+    if (mail.indexOf('@YALE.EDU')>-1){
+      ev.attending.push(request.body.email);
+      response.redirect('/events/' + ev.id);
+    }
+   else{
     var contextData = {errors: [], event: ev};
     contextData.errors.push('Invalid email');
     response.render('event-detail.html', contextData);    
   }
-
+}
 }
 
 function api(request, response){
@@ -169,3 +185,4 @@ module.exports = {
   'rsvp': rsvp,
   'api':api
 };
+
