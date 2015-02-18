@@ -58,6 +58,10 @@ a {
   text-decoration: underline;
 }
 
+div{
+  font-size: 140%;
+}
+
 .form-errors {
 	color: red;
 }
