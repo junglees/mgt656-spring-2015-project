@@ -1,63 +1,116 @@
 header{
-  font-family:'times new roman';
-  color: red !important;
+  font-family:'Impact';
+  color: #700000 !important;
   font-weight: bolder;
-}
-
-.donkey{
-  font-family:trebuchet;
-   font-size:20pt;
-}
-
-p{
-  font-family:garamond;
-  padding: 15px;
-  font-size:130%;
-  color: #FFFFF0 !important;
-}
-
-span{
-  padding:10px;
-}
-
-img{
-  padding-bottom:10px;
-  border-radius: 20px;;
-}
-
-
-li {
-    list-style-type: none;
-    display: inline;
-    padding:20px;
-}
-
-ul{
-  color: orange !important;
-  padding: 20px;
+  padding-bottom:40px;
+  font-size:250%;
 }
 
 body {
-  padding: 50px;
+  padding: 20px;
   font: 14px;
   text-align: center;
-  background: url("http://vmwebapp.com/vmworld/images/vmworld-gatherings.jpg");
-  background-size:cover;
+  background: url("http://www.pl-vacations.com/images/slider-image-2.jpg");
+}
+
+span{
+  font-weight: bolder;
+  font-size: 130%;
+  font-family: garamond;
+  color:#700000;
+}
+
+
+p{
+  font-family:'garamond';
+  padding-bottom: 30px;
+  font-size:130%;
+  color: #990066 !important;
+  font-weight: bold;
+}
+
+img{
+  padding-bottom:2px;
+  border-radius: 8px;
+}
+
+ul{
+  color: white !important;
+  background-color: black;
+  opacity:0.7;
+}
+
+li {
+  list-style-type:none;
+  display: inline;
+  padding: 30px;
 }
 
 a {
- 
   font-weight: bolder;
   font-family: garamond;
-  color: orange !important;
+  color: white !important;
+  font-size: 100%;
+}
+
+.monkey{
+  color: #006699 !important;
+  text-decoration: underline;
 }
 
 .form-errors {
 	color: red;
 }
 
-footer{
-  background-color: #FFFFFF;
-  border: solid;
+.event{
+  font-size:120%;
+  font-family:garamond;
 }
 
+.eventpage{
+  font-size:120%;
+}
+
+.check{
+  font-size:115%;
+  padding:10px;
+}
+
+.eventheader{
+  font-size:250%;
+  color:#000000 !important;
+  padding-bottom:20px;
+}
+
+#date{
+  color:#990066;
+  font-size:150%;
+}
+
+#location{
+  color:#990066;
+  font-size:150%;
+}
+
+#image{
+  border: solid black;
+  padding:4px;
+}
+
+#attend{
+  padding:2px;
+  color:white !important;
+}
+
+#attendees{
+  padding-bottom:10px;
+}
+
+#rsvpemail{
+  color:white !important;
+}
+
+footer{
+  padding:10px;
+  background-color: transparent;
+}

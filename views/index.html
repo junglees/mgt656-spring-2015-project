@@ -2,29 +2,27 @@
 
 {% block header %}
   <header>
-    <img src="http://www.wpclipart.com/cartoon/people/men_cartoons/it_raining_men/wild_and_crazy_guy.png" width="100" height="200" id="logo">
-    <h1>JUNGLEES</h1>
+  <h1>JUNGLEES</h1>
+  <img src="http://static.wix.com/media/fd5701_d4214698778cfefcd7c02a7547279c9e.png_256" width="100" height="100" id="logo" align="center">
   </header>
 {% endblock %}
 
 {% block mainContent %}
+
+  <span>About Us</span>
   <p>
-    Welcome to our website which allows you easily create events and RSVP to events!
+    We're the coolest kids on the block. Check out our story at the <a class="monkey" href="/about">About Us</a> page!
   </p>
+  <span>Events</span>
   <p>
-    We're new to the market, but excited for you to get to know us. Check out the <a href="/about">About us</a> page to learn about the company and management. 
+    You're not the type to spend your nights and weekends at home -- go to our <a class="monkey" href="/events">Events</a> page.
+    Or you could just look below!
   </p>
-  <p>
-    If you wish to peruse our event offerings, see the <a href="/events">Events</a> page.
-  </p>
+
  
-  <p>These are the list of events:</p>
   <div>
     <br>
     {% include "fragments/events-list.html" %}
     </br>
   </div> 
-   <p>
-    <a id="new" href="/events/new">Create a new event</a>
-  </p>
 {% endblock %}
