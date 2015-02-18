@@ -52,6 +52,7 @@
 
     {% block header %}
       <header>JUNGLEES</header>
+      <img src="http://static.wix.com/media/fd5701_d4214698778cfefcd7c02a7547279c9e.png_256" width="100" height="100" id="logo" align="center">
     {% endblock %}
 
     {% block mainContent %}
@@ -60,9 +61,11 @@
 
     {% block footer %}
       <footer>
-        <ul>
+        <ul class="check">
           <li><a href="/">Home</a></li>
-          <li><a href="/about">About us</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/events">Events</a></li>
+          <li><a id="new" href="/events/new">Create Event</a></li>
         </ul>
      </footer>
     {% endblock %}
